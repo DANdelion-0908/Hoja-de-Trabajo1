@@ -1,26 +1,18 @@
-public class Radio implements IRadio {
-    
-    private boolean state;
+package Model;
+/**
+ * @author moises.alonso
+ */
+public interface IRadio {
 
-    public Radio(){
-        state = false;
-    }
-
-    public void on(){
-        state = true;
-    }
+	public void on();
 	
-	public void off(){
-        state = false;
-    }
+	public void off();
 	
 	/***
 	 * Este metodo nos indica si la radio esta encendida o apagada
 	 * @return true si la radio esta encendida y false cuando la radio este apagada
 	 */
-	public boolean isOn(){
-        return state;
-    }
+	public boolean isOn();
 	
 	/***
 	 * Este metodo nos ayuda a establecer la frecuencia, recibe un parametro llamado freq que puede "AM" o "FM"
@@ -49,5 +41,4 @@ public class Radio implements IRadio {
 	public double getFMSlot(int slot);
 	
 	public int getAMSlot(int slot);
-
 }
