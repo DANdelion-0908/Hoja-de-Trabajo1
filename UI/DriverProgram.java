@@ -10,7 +10,6 @@ public class DriverProgram {
         IRadio miRadio = new Radio();
         try (Scanner entrada = new Scanner(System.in)) {
         	boolean loop = true;
-            String offOut;
           
             while(loop) {  
             	if(miRadio.isOn()) {
@@ -45,15 +44,32 @@ public class DriverProgram {
             		} break;
             		
             		case "3": {
-            			
+            			miRadio.Backward();
             		} break; 
             		
             		case "4": {
+            			System.out.println("Ingresa un número del 1 al 12 para guardar la emisora.");
+            			
+            			if(miRadio.getFrequence().equals("AM")) {
+            				int slot = entrada.nextInt();
+            				miRadio.saveAMStation(miRadio.getAMActualStation(), slot);
+            				System.out.println("Emisora guardada en la posición: " + slot);
+            				
+            			} else {
+            				int slot = entrada.nextInt();
+            				miRadio.saveFMStation(miRadio.getFMActualStation(), slot);
+            				System.out.println("Emisora guardada en la posición: " + slot);
+            			}
+            			System.out.println("");
             			
             		} break;
             		
             		case "5": {
-            			
+            			if(miRadio.getFrequence().equals("AM")) {
+            				int slot = entrada.nextInt();
+            				System.out.println("La emisora en esa posición es: " + miRadio.getAMActualStation());
+            				System.out.println("La emisora actual es: " + miRadio.getAMActualStation());
+            			}
             		} break;
             		
             		case "6": {
@@ -64,9 +80,15 @@ public class DriverProgram {
             	}else {
             		System.out.println("La radio está apagada.");
             		System.out.println("Escribe '1' para encender la Radio.");
+            		System.out.println("Escribe '2' para salir de la Radio.");
             		String opt = entrada.nextLine();
             		if(opt.equals("1")) {
             			miRadio.on();
+            		}
+            		
+            		if(opt.equals("2")) {
+            			System.out.println("Saliendo...");
+            			loop = false;
             		}
             	}
             }
