@@ -55,6 +55,7 @@ public class DriverProgram {
             				System.out.println("Emisora guardada.");
             			
             			} else if(miRadio.getFrequence().equals("FM")){
+            				System.out.println("Ingresa un número del 1 al 12 para guardar la emisora.");
             				int slot = entrada.nextInt();
             				miRadio.saveFMStation(miRadio.getFMActualStation(), slot);
             				System.out.println("Emisora guardada.");
@@ -73,7 +74,7 @@ public class DriverProgram {
             				System.out.println("Selecciona la posición de la emisora: ");
             				int slot = entrada.nextInt();
             				miRadio.saveFMStation(miRadio.getFMActualStation(), slot);
-            				System.out.println("La emisora actual es: " + miRadio.getAMSlot(slot) + " AM.");
+            				System.out.println("La emisora actual es: " + miRadio.getFMSlot(slot) + " FM.");
             			}
             		} break;
             		
@@ -81,7 +82,8 @@ public class DriverProgram {
             			miRadio.off();
             		} break;
             		
-            		} break;
+            		} 
+            		
             	}else {
             		System.out.println("La radio está apagada.");
             		System.out.println("Escribe '1' para encender la Radio.");

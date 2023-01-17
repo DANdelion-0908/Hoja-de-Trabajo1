@@ -120,7 +120,10 @@ public class Radio implements IRadio {
 	@Override
 	public void saveFMStation(double actualStation, int slot) {
 		if(Frequence.equals("FM")) {
-			FMSavedStations.add(slot + 1, FMActualStation);
+			for(int i = 0; i < 12; i++) {
+				FMSavedStations.add(0.0);
+			}
+			FMSavedStations.add(slot - 1, FMActualStation);
 			
 		} else {
 			System.out.println("No se puede guardar la emisora en la frecuencia actual.");
@@ -131,10 +134,12 @@ public class Radio implements IRadio {
 	
 	@Override
 	public void saveAMStation(int actualStation, int slot) {
-		
 		if(Frequence.equals("AM")) {
-			AMSavedStations.add(slot - 1, AMActualStation);
+			for(int i = 0; i < 12; i++) {
+				AMSavedStations.add(0);
+			}
 			
+			AMSavedStations.add(slot - 1, AMActualStation);
 		} else {
 			System.out.println("No se puede guardar la emisora en la frecuencia actual.");
 		}
