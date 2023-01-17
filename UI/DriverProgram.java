@@ -1,3 +1,11 @@
+/*Héctor Daniel Penedo Juarez
+ * No. 22217
+ * Algoritmos y Estructuras de Datos
+ * Hoja de Trabajo 1
+ */
+
+
+
 package UI;
 import Model.IRadio;
 import Model.Radio;
@@ -6,12 +14,14 @@ import java.util.Scanner;
 
 public class DriverProgram {
 
-    public static void main(String[] args) throws Exception {
+    // The main method of the program.
+	public static void main(String[] args) throws Exception {
         IRadio miRadio = new Radio();
         try (Scanner entrada = new Scanner(System.in)) {
         	boolean loop = true;
           
-            while(loop) {  
+            // A loop that is executed until the user decides to exit the program.
+			while(loop) {  
             	if(miRadio.isOn()) {
             		System.out.println("La radio está encendida.");
             		System.out.println("La Frecuencia actual es: " + miRadio.getFrequence());
@@ -31,7 +41,8 @@ public class DriverProgram {
             		
             		switch(opt) {
             		
-            		case "1": {
+            		// Asking the user to write AM or FM to change the frequency.
+					case "1": {
             			System.out.println("Escribe 'AM' o 'FM' para cambiar la frecuencia.");
             			String freq = entrada.nextLine();
             			miRadio.setFrequence(freq);
@@ -39,15 +50,18 @@ public class DriverProgram {
 
             		} break;
             		
-            		case "2": {
+            		// Calling the method Forward() from the class Radio.
+					case "2": {
             			miRadio.Forward();
             		} break;
             		
-            		case "3": {
+            		// Calling the method Backward() from the class Radio.
+					case "3": {
             			miRadio.Backward();
             		} break; 
             		
-            		case "4": {
+            		// Asking the user to write a number from 1 to 12 to save the station.
+					case "4": {
             			if(miRadio.getFrequence().equals("AM")) {
             				System.out.println("Ingresa un número del 1 al 12 para guardar la emisora.");
             				int slot = entrada.nextInt();
@@ -63,7 +77,8 @@ public class DriverProgram {
             			
             		} break;
             		
-            		case "5": {
+            		// Asking the user to write a number from 1 to 12 to select the station.
+					case "5": {
             			if(miRadio.getFrequence().equals("AM")) {
             				System.out.println("Selecciona la posición de la emisora: ");
             				int slot = entrada.nextInt();
@@ -78,13 +93,15 @@ public class DriverProgram {
             			}
             		} break;
             		
-            		case "6": {
+            		// Calling the method off() from the class Radio.
+					case "6": {
             			miRadio.off();
             		} break;
             		
             		} 
             		
-            	}else {
+            	}// This is the code that is executed when the radio is off.
+				else {
             		System.out.println("La radio está apagada.");
             		System.out.println("Escribe '1' para encender la Radio.");
             		System.out.println("Escribe '2' para salir de la Radio.");
