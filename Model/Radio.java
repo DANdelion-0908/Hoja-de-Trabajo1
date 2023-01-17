@@ -142,12 +142,12 @@ public class Radio implements IRadio {
 
 	@Override
 	public double getFMSlot(int slot) {
-		return FMSlot;
+		return FMSavedStations.get(slot);
 	}
 
 	@Override
 	public int getAMSlot(int slot) {
-		return AMSlot;
+		return AMSavedStations.get(slot);
 	}
 
 	}
