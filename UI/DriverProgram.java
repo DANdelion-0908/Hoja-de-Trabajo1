@@ -48,27 +48,25 @@ public class DriverProgram {
             		} break; 
             		
             		case "4": {
-            			System.out.println("Ingresa un número del 1 al 12 para guardar la emisora.");
-            			
             			if(miRadio.getFrequence().equals("AM")) {
+            				System.out.println("Ingresa un número del 1 al 12 para guardar la emisora.");
             				int slot = entrada.nextInt();
             				miRadio.saveAMStation(miRadio.getAMActualStation(), slot);
-            				System.out.println("Emisora guardada en la posición: " + slot);
-            				
-            			} else {
+            				System.out.println("Emisora guardada.");
+            			
+            			} else if(miRadio.getFrequence().equals("FM")){
             				int slot = entrada.nextInt();
             				miRadio.saveFMStation(miRadio.getFMActualStation(), slot);
-            				System.out.println("Emisora guardada en la posición: " + slot);
+            				System.out.println("Emisora guardada.");
             			}
-            			System.out.println("");
             			
             		} break;
             		
             		case "5": {
             			if(miRadio.getFrequence().equals("AM")) {
             				int slot = entrada.nextInt();
-            				System.out.println("La emisora en esa posición es: " + miRadio.getAMActualStation());
-            				System.out.println("La emisora actual es: " + miRadio.getAMActualStation());
+            				System.out.println("La emisora en esa posición es: " + miRadio.getFMActualStation());
+            				//System.out.println("La emisora actual es: " + miRadio.setAMActualStation(miRadio.getAMSlot(slot)));
             			}
             		} break;
             		

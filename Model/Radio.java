@@ -1,4 +1,7 @@
 package Model;
+
+import java.util.ArrayList;
+
 public class Radio implements IRadio {
     
     private boolean state;
@@ -7,6 +10,8 @@ public class Radio implements IRadio {
 	private int AMActualStation = 530;
 	private double FMSlot;
 	private int AMSlot;
+
+	
 	
     public Radio() {
     	state = false;
@@ -25,8 +30,20 @@ public class Radio implements IRadio {
 	}
 	
 	@Override
-	public void setFrequence(String freq) {
-			this.Frequence = freq;
+	public void setFrequence(String freq) throws Exception {
+			try{
+				if(freq.toUpperCase().equals("AM")){
+					this.Frequence = freq.toUpperCase();
+				
+				} else if(freq.toUpperCase().equals("FM")){
+					this.Frequence = freq.toUpperCase();
+					
+				}
+			} catch(Exception e) {
+				System.out.println("Se ha detectado el error: " + e.getMessage());
+				e.printStackTrace();
+				
+			}
 	
 	}
 
@@ -97,15 +114,30 @@ public class Radio implements IRadio {
 			System.out.println("La emisora actual es: " + FMActualStation + " FM.");
 		}
 	}
+	
+	private ArrayList<Double> FMSavedStations = new ArrayList<>();
 
 	@Override
 	public void saveFMStation(double actualStation, int slot) {
-		
+		if(Frequence.equals("FM")) {
+			FMSavedStations.add(slot + 1, FMActualStation);
+			
+		} else {
+			System.out.println("No se puede guardar la emisora en la frecuencia actual.");
+		}
 	}
 
+	private ArrayList<Integer> AMSavedStations = new ArrayList<>();
+	
 	@Override
 	public void saveAMStation(int actualStation, int slot) {
 		
+		if(Frequence.equals("AM")) {
+			AMSavedStations.add(slot - 1, AMActualStation);
+			
+		} else {
+			System.out.println("No se puede guardar la emisora en la frecuencia actual.");
+		}
 	}
 
 	@Override
